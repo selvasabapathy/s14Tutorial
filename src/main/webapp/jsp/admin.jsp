@@ -7,27 +7,21 @@
   <title>Welcome</title>
 </head>
 <body>
-<table align="center">
+<table align="right">
   <tr>
-    <td><a href="admin">Admin</a></td>
-    <td><a href="update">Account</a></td>
     <td><a href="logout">Logout</a></td>
   </tr>
 </table>
 <table>
   <tr>
-    <td>Welcome ${name}!</td>
+    <td>Welcome Administrator, ${name}!</td>
   </tr>
   <tr>
-    <td>This is the main page... TUTORIAL contents go here.</td>
+    <td>This is the admin page... ADMINISTRATION contents go here.</td>
   </tr>
   <tr>
   </tr>
 </table>
-<table align="center">
-  <tr>
-    <td style="font-style: italic; color: red;">${message}</td>
-  </tr>
-</table>
+
 </body>
 </html>

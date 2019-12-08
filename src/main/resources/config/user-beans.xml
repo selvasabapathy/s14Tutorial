@@ -12,13 +12,14 @@
 
   <bean id="userService" class="com.sabapathy.tutorial.service.UserServiceImpl" />
   <bean id="userDao" class="com.sabapathy.tutorial.dao.UserDaoImpl" />
+  <bean id="userRoleDao" class="com.sabapathy.tutorial.dao.UserRoleDaoImpl" />
   <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
     <property name="dataSource" ref="datasource" />
   </bean>
 
   <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="org.h2.Driver" />
-    <property name="url" value="jdbc:h2:mem:" />
+    <property name="url" value="jdbc:h2:mem:tutorial;INIT=runscript from 'classpath:sql/schema.sql'\;runscript from 'classpath:sql/data.sql'" />
     <property name="username" value="sa" />
     <property name="password" value="" />
   </bean>

@@ -7,8 +7,13 @@
   <title>Registration</title>
 </head>
 <body>
-<form:form id="regForm" modelAttribute="user" action="registerProcess" method="post">
-
+<table align="center">
+  <tr>
+    <td><a href="welcome">Home</a></td>
+    <td><a href="logout">Logout</a></td>
+  </tr>
+</table>
+<form:form id="updateForm" modelAttribute="account" action="updateProcess" method="post">
   <table align="center">
     <tr>
       <td><form:label path="name">Name:</form:label></td>
@@ -20,11 +25,15 @@
     </tr>
     <tr>
       <td><form:label path="username">Username:</form:label></td>
-      <td><form:input path="username" name="username" id="username"/></td>
+      <td><form:input path="username" name="username" id="username" readonly="true"/></td>
     </tr>
     <tr>
       <td><form:label path="password">Password:</form:label></td>
       <td><form:password path="password" name="password" id="password"/></td>
+    </tr>
+    <tr>
+      <td><form:label path="repassword">Re-Enter Password:</form:label></td>
+      <td><form:password path="repassword" name="repassword" id="repassword"/></td>
     </tr>
     <tr>
       <td><img src="${pageContext.request.contextPath }/captcha"></td>
@@ -32,13 +41,9 @@
     </tr>
     <tr>
       <td></td>
-      <td><form:button id="register" name="register">Register</form:button></td>
+      <td><form:button id="update" name="update">Update</form:button></td>
     </tr>
     <tr></tr>
-    <tr>
-      <td></td>
-      <td><a href="home.jsp">Home</a></td>
-    </tr>
   </table>
 </form:form>
 <table align="center">
@@ -46,6 +51,5 @@
     <td style="font-style: italic; color: red;">${message}</td>
   </tr>
 </table>
-
 </body>
 </html>

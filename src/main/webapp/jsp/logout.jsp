@@ -4,29 +4,19 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-  <title>Welcome</title>
+  <title>Logout</title>
 </head>
 <body>
-<table align="center">
-  <tr>
-    <td><a href="admin">Admin</a></td>
-    <td><a href="update">Account</a></td>
-    <td><a href="logout">Logout</a></td>
-  </tr>
-</table>
 <table>
   <tr>
-    <td>Welcome ${name}!</td>
-  </tr>
-  <tr>
-    <td>This is the main page... TUTORIAL contents go here.</td>
+    <td>Thank you - You're logged out!</td>
   </tr>
   <tr>
   </tr>
-</table>
-<table align="center">
   <tr>
-    <td style="font-style: italic; color: red;">${message}</td>
+  </tr>
+  <tr>
+    <td><a href="home.jsp">Home</a></td>
   </tr>
 </table>
 </body>

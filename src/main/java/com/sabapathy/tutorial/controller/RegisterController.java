@@ -13,49 +13,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.sabapathy.tutorial.model.Login;
 import com.sabapathy.tutorial.model.User;
 import com.sabapathy.tutorial.service.UserService;
 
 @Controller
-public class LoginController {
-    private static Logger logger = LoggerFactory.getLogger(LoginController.class);
+public class RegisterController {
+    Logger logger = LoggerFactory.getLogger(RegisterController.class);
 
     @Autowired
-    UserService userService;
+    public UserService userService;
 
     private boolean verifyCaptcha(HttpServletRequest request) {
+        logger.debug("Verifying the captcha...");
+
         String generatedCaptcha = request.getSession().getAttribute("captchaSecurityCode").toString();
         String userEnteredCaptcha = request.getParameter("captcha");
         return generatedCaptcha.equals(userEnteredCaptcha);
     }
 
-    @RequestMapping(value = "/loginProcess", method = RequestMethod.POST)
-    public ModelAndView loginProcess(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("login") Login login) {
-        ModelAndView mav;
-
+    @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
+    public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response, @ModelAttribute("user") User user) {
         if (!verifyCaptcha(request)) {
-            logger.debug("*** Login captcha failed!");
-            mav = new ModelAndView("login");
+            logger.debug("Captcha verification failed duirng registration for user " + user.getName());
+
+            ModelAndView mav = new ModelAndView("register");
+            mav.addObject("account", user);
             mav.addObject("message", "Incorrect captcha - Please enter again!");
             return mav;
         }
 
-        User user = userService.login(login);
-        if (null != user) {
-            logger.debug("*** Login successful!");
+        userService.register(user);
 
-            HttpSession session = request.getSession();
-            session.setAttribute("currentUser", user);
+        HttpSession session = request.getSession();
+        session.setAttribute("currentUser", user);
 
-            mav = new ModelAndView("welcome");
-            mav.addObject("name", user.getName());
-        } else {
-            logger.debug("*** Login failed!");
-
-            mav = new ModelAndView("login");
-            mav.addObject("message", "No user found for '" + login.getUsername() + "' and/or the given password!");
-        }
-        return mav;
+        return new ModelAndView("welcome", "name", user.getName());
     }
 }

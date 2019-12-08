@@ -20,10 +20,13 @@
         <td><form:password path="password" name="password" id="password"/></td>
       </tr>
       <tr>
+        <td><img src="${pageContext.request.contextPath}/captcha"></td>
+        <td><form:input path="captcha" name="captcha" id="captcha"/></td>
+      </tr>
+      <tr>
         <td></td>
         <td align="left"><form:button id="login" name="login">Login</form:button></td>
       </tr>
-
       <tr></tr>
       <tr>
         <td></td>
