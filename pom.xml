@@ -16,7 +16,7 @@
     <spring.security.version>5.2.1.RELEASE</spring.security.version>
     <slf4j.api.version>2.0.0-alpha1</slf4j.api.version>
     <sl4j.log4j2.version>2.12.1</sl4j.log4j2.version>
-    <h2.database.version>1.4.200</h2.database.version>
+    <h2.database.version>2.1.210</h2.database.version>
     <junit.version>4.12</junit.version>
   </properties>
 
